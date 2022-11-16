@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>集装箱识别-集装箱箱况检测-中集飞瞳</title>
+    <meta name="author" content="CIMCAI">
+    <meta name="applicable-device" content="pc,mobile">
+    <link rel="icon" href="favicon.ico">
+    <meta charset="utf-8" name="keywords" content="集装箱识别,集装箱箱况检测">
+    <meta charset="utf-8" name="description" content="中集飞瞳CIMCAI致力于集装箱识别,集装箱箱况检测,集装箱残损识别,集装箱箱况检验,人工智能在集装箱码头闸口，岸边，轮胎吊，以及集装箱堆场的落地应用。中集飞瞳CIMCAI全球先集装箱人工智能AI技术，提供集装箱识别,集装箱箱况检测,集装箱残损识别,集装箱箱况检验方案，是集装箱识别,集装箱箱况检测,集装箱残损识别,集装箱箱况检验供应商。">
+    <link rel="canonical" href="http://www.cimcai.com"/>
+    
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <meta name="version" content="1.2.2" />
+
+    <script src="http://www.cimcai.com/assets/js/jquery-3.5.1.min.js"></script>
+    <script src="http://www.cimcai.com/assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/video.min.js"></script>
+    <script src="assets/js/index.js"></script>
+    <script src="assets/js/judge_browser_version.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="http://www.cimcai.com/assets/style/bootstrap.min.css">
+    <link rel="stylesheet" href="http://www.cimcai.com/assets/style/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="assets/icon/iconfont.css">
+    <link rel="stylesheet" href="assets/style/css.css">
+    <link rel="stylesheet" href="assets/style/api.css">
+    <link rel="stylesheet" href="assets/style/org-tree.css">
+    <link rel="stylesheet" href="assets/style/video-js.min.css">
+    <link rel="stylesheet" href="assets/style/swiper-bundle.min.css">
+</head>
+<body id="api-web">
+    <header class="is-show">
+        <div class="left visible-lg visible-md" onclick="window.open('/')">
+            <img class="logo-img" style="float: left" src="http://www.cimcai.com/material/pic/wechat_logo_dark_no.png" alt="">
+            <div class="logo"><h1>飞瞳引擎 | </h1><p></p></div>
+            <div class="name"><p>集装箱识别检测云服务</p></div>
+        </div>
+        <div class="left hidden-lg hidden-md">
+            <div class="logo" onclick="window.open('/index.html')"><img src="http://www.cimcai.com/material/pic/wechat_logo_dark_no.png" alt=""></div>
+        </div>
+        <div class="right visible-lg">
+            联系我们: 400-880-5717 | cooperate@cimcai.com
+            <a href="javascript:void(0);" class="red-btn pop" type="button">快速入口</a>
+            <a href="http://b.cimcai.com" class="red-btn en" type="button" style="margin-left: 2px">EN</a>
+        </div>
+    </header>
+    <div class="container">
+        <div class="side-nav">
+            <div class="side-title">飞瞳引擎接入文档</div>
+            <ul class="nav-item">
+                <li class="side-item active" data-target="basic">1 照片集装箱信息识别api</li>
+                <li class="side-item" data-target="damage">2 照片集装箱残损识别api</li>
+                <li class="side-item">3 视频集装箱残损及信息识别api</li>
+                <ul>
+                    <li class="side-item" data-target="video1">3.1 视频集装箱残损上传api</li>
+                    <li class="side-item" data-target="video2">3.2 视频集装箱残损获取api</li>
+                </ul>
+                <li class="side-item" data-target="plate">4 照片集卡/半挂车车牌识别api</li>
+                <li class="side-item" data-target="photo">5 照片是否PS修改识别api</li>
+                <li class="side-item" data-target="seal">6 照片铅封信息识别api</li>
+            </ul>
+        </div>
+        <div class="container-box">
+            <div class="preview">
+                <div class="target active" id="basic">
+                    <h2 class="top">1 照片集装箱信息识别api</h2>
+                    <div class="desc"><p>用于识别集装箱照片箱号、箱型、重量标识信息</p></div>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>基本信息</h3>
+                    <ul class="editor-info">
+                        <li><strong>接口地址： </strong><code class="span">http://service.cimcai.com/detect-photo-container-info</code></li>
+                        <li><strong>请求方式： </strong><code class="span">POST</code></li>
+                        <li><strong>Content-Type： </strong><code class="span">multipart/form-data</code></li>
+                    </ul>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>请求参数</h3>
+                    <div class="markdown">
+                        <h4><a href="javascript:;"></a>body参数及说明</h4>
+                        <table>
+                            <tbody><tr>
+                                <th>参数名</th>
+                                <th>示例值</th>
+                                <th>参数类型</th>
+                                <th>是否必填</th>
+                                <th>参数描述</th>
+                            </tr>
+                            <tr>
+                                <td>test.jpg</td>
+                                <td>test.jpg</td>
+                                <td>file</td>
+                                <td>是</td>
+                                <td><pre>照片文件</pre></td>
+                            </tr>
+                            <tr>
+                                <td>keys</td>
+                                <td>b7988d2f72b5f69dc059d3a41b1b3d64</td>
+                                <td>string</td>
+                                <td>是</td>
+                                <td><pre>飞瞳引擎小程序中，个人主页中32位开发秘钥</pre></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>响应示例</h3>
+                    <div class="markdown">
+                        <h4><a href="javascript:;"></a>成功响应示例</h4>
+                        <div class="editor-preview">
+                            <pre class="json-editor-blackbord" contenteditable="false"><a href="" class="json-toggle"></a>{<ul class="json-dict"><li><a href="" class="json-toggle"></a><span class="json-string json-property">"data"</span>: {<ul class="json-dict"><li><a href="" class="json-toggle"></a><span class="json-string json-property">"container_weight"</span>: {<ul class="json-dict"><li><span class="json-string json-property">"TARE_LBS"</span>: <span class="json-literal json-literal-number">8160</span>, //自重（LBS）</li><li><span class="json-string json-property">"MAX_GROSS_LBS"</span>: <span class="json-literal json-literal-number">71650</span>, //总重（LBS）</li><li><span class="json-string json-property">"MAX_PAYLOAD_KGS"</span>: <span class="json-literal json-literal-number">28800</span>, //载重（KG）</li><li><span class="json-string json-property">"MAX_GROSS_KGS"</span>: <span class="json-literal json-literal-number">32500</span>, //总重（KG）</li><li><span class="json-string json-property">"TARE_KGS"</span>: <span class="json-literal json-literal-number">3700</span>, //自重（KG）</li><li><span class="json-string json-property">"MAX_PAYLOAD_LBS"</span>: <span class="json-literal json-literal-number">63490</span> //载重（LBS）</li></ul>}, //重量标识</li><li><span class="json-string json-property">"container_type"</span>: <span class="json-string">"45G1"</span>, //箱型</li><li><span class="json-string json-property">"container_no"</span>: <span class="json-string">"UETU5691329"</span> //箱号</li></ul>}, //返回数据</li><li><span class="json-string json-property">"code"</span>: <span class="json-literal json-literal-number">0</span>, //状态码</li><li><span class="json-string json-property">"message"</span>: <span class="json-string">"成功"</span> //状态信息</li></ul>}</pre>
+                        </div>
+                        <h4><a href="javascript:;"></a>字段描述</h4>
+                        <table class="response-parameter">
+                            <tbody><tr>
+                                <th>参数名</th>
+                                <th>示例值</th>
+                                <th>参数类型</th>
+                                <th>参数描述</th>
+                            </tr>
+                            <tr>
+                                <td>data</td>
+                                <td></td>
+                                <td>Object</td>
+                                <td><pre>返回数据</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.container_weight</td>
+                                <td></td>
+                                <td>Object</td>
+                                <td><pre>重量标识</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 30px;">data.container_weight.TARE_LBS</td>
+                                <td>8160</td>
+                                <td>Number</td>
+                                <td><pre>自重（LBS）</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 30px;">data.container_weight.MAX_GROSS_LBS</td>
+                                <td>71650</td>
+                                <td>Number</td>
+                                <td><pre>总重（LBS）</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 30px;">data.container_weight.MAX_PAYLOAD_KGS</td>
+                                <td>28800</td>
+                                <td>Number</td>
+                                <td><pre>载重（KG）</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 30px;">data.container_weight.MAX_GROSS_KGS</td>
+                                <td>32500</td>
+                                <td>Number</td>
+                                <td><pre>总重（KG）</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 30px;">data.container_weight.TARE_KGS</td>
+                                <td>3700</td>
+                                <td>Number</td>
+                                <td><pre>自重（KG）</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 30px;">data.container_weight.MAX_PAYLOAD_LBS</td>
+                                <td>63490</td>
+                                <td>Number</td>
+                                <td><pre>载重（LBS）</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.container_type</td>
+                                <td>45G1</td>
+                                <td>Number</td>
+                                <td><pre>箱型</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.container_no</td>
+                                <td>UETU5691329</td>
+                                <td>String</td>
+                                <td><pre>箱号</pre></td>
+                            </tr>
+                            <tr>
+                                <td>code</td>
+                                <td>0</td>
+                                <td>Number</td>
+                                <td><pre>状态码</pre></td>
+                            </tr>
+                            <tr>
+                                <td>message</td>
+                                <td>成功</td>
+                                <td>String</td>
+                                <td><pre>状态信息</pre></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>调用示例</h3>
+                    <div class="markdown">
+                        <h4><a href="javascript:;"></a>python</h4>
+                        <div class="editor-preview">
+                            <pre class="json-editor-blackbord python" contenteditable="false">
+                                <ul class="json-dict"><li># coding=utf-8</li><li><span class="json-literal">import </span><span class="param">os</span></li><li><span class="json-literal">import </span><span class="param">requests</span></li><li><span class="param">url = </span><span class="json-string">'http://service.cimcai.com/detect-photo-container-info'</span></li><li><span class="param">image_path = </span><span class="json-string">'您的照片路径'</span></li><li><span class="param">image_name = os.path.basename(image_path)</span></li><li># keys为飞瞳引擎小程序中，个人主页中32位开发秘钥</li><li><span class="param">payload = {</span><span class="json-string">'keys'</span><span class="param">: </span><span class="json-string">'b7988d2f72b5f69dc059d3a41b1b3d64'</span><span class="param">}</span></li><li><span class="param">files = [(image_name,(image_name,open(image_path,</span><span class="json-string">'rb'</span><span class="param">),</span><span class="json-string">'image/jpeg'</span><span class="param">))]</span></li><li><span class="param">headers = {}</span></li><li><span class="param">response = requests.request(</span><span class="json-string">'POST'</span><span class="param">, url, headers=headers, data=payload, files=files)</span></li><li><span class="param">print(response.text)</span></li></ul>
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="target" id="damage">
+                    <h2 class="top">2 照片集装箱残损识别api</h2>
+                    <div class="desc"><p>用于识别集装箱照片残损</p></div>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>基本信息</h3>
+                    <ul class="editor-info">
+                        <li><strong>接口地址： </strong><code class="span">http://service.cimcai.com/detect-photo-container-damaged</code></li>
+                        <li><strong>请求方式： </strong><code class="span">POST</code></li>
+                        <li><strong>Content-Type： </strong><code class="span">multipart/form-data</code></li>
+                    </ul>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>请求参数</h3>
+                    <div class="markdown">
+                        <h4><a href="javascript:;"></a>body参数及说明</h4>
+                        <table>
+                            <tbody><tr>
+                                <th>参数名</th>
+                                <th>示例值</th>
+                                <th>参数类型</th>
+                                <th>是否必填</th>
+                                <th>参数描述</th>
+                            </tr>
+                            <tr>
+                                <td>test.jpg</td>
+                                <td>test.jpg</td>
+                                <td>file</td>
+                                <td>是</td>
+                                <td><pre>照片文件</pre></td>
+                            </tr>
+                            <tr>
+                                <td>keys</td>
+                                <td>b7988d2f72b5f69dc059d3a41b1b3d64</td>
+                                <td>string</td>
+                                <td>是</td>
+                                <td><pre>飞瞳引擎小程序中，个人主页中32位开发秘钥</pre></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>响应示例</h3>
+                    <div class="markdown">
+                        <h4><a href="javascript:;"></a>成功响应示例</h4>
+                        <div class="editor-preview">
+                            <pre class="json-editor-blackbord" contenteditable="false"><a href="" class="json-toggle"></a>{<ul class="json-dict"><li><span class="json-string json-property">"code"</span>: <span class="json-literal json-literal-number">0</span>, //状态码</li><li><span class="json-string json-property">"message"</span>: <span class="json-string">"成功"</span>, //状态信息</li><li><a href="" class="json-toggle"></a><span class="json-string json-property">"data"</span>: {<ul class="json-dict"><li><span class="json-string json-property">"damaged_or_not"</span>: <span class="json-literal json-literal-number">1</span>, //箱况，0:好箱  1:坏箱  2:未检测到箱子</li><li><a href="" class="json-toggle"></a><span class="json-string json-property">"damage_code"</span>: [<ol class="json-array"><li><span class="json-string">"CK"</span></li></ol>], //损坏代码，["BR"]:断裂 ["BT"]:弯曲 ["DB"]:杂物 ["CK"]:破裂 ["DY"]:粉末</li><li><span class="json-string json-property">"is_outside"</span>: <span class="json-literal json-literal-number">1</span>, //0:箱内  1:箱外  2:未检测到箱子</li><li><span class="json-string json-property">"weight"</span>: [], //重量标识</li><li><span class="json-string json-property">"container_num"</span>: <span class="json-string">""</span>, //箱号</li><li><span class="json-string json-property">"container_type"</span>: <span class="json-string">""</span>, //箱型</li><li><a href="" class="json-toggle"></a><span class="json-string json-property">"crop_img"</span>: [<ol class="json-array"><li><a href="https://file.cimcai.com/video/frames/1643265066_test/1643265068.61813041.jpg" target="_blank" class="json-string json-url">"https://file.cimcai.com/video/frames/1643265066_test/1643265068.61813041.jpg"</a></li></ol>] //残损部位图片地址</li></ul>} //识别相关信息</li></ul>}</pre>
+                        </div>
+                        <h4><a href="javascript:;"></a>字段描述</h4>
+                        <table class="response-parameter">
+                            <tbody><tr>
+                                <th>参数名</th>
+                                <th>示例值</th>
+                                <th>参数类型</th>
+                                <th>参数描述</th>
+                            </tr>
+                            <tr>
+                                <td>code</td>
+                                <td>0</td>
+                                <td>Number</td>
+                                <td><pre>状态码</pre></td>
+                            </tr>
+                            <tr>
+                                <td>message</td>
+                                <td>成功</td>
+                                <td>String</td>
+                                <td><pre>状态信息</pre></td>
+                            </tr>
+                            <tr>
+                                <td>data</td>
+                                <td></td>
+                                <td>Object</td>
+                                <td><pre>识别相关信息</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.damaged_or_not</td>
+                                <td>1</td>
+                                <td>Number</td>
+                                <td><pre>箱况，0:好箱  1:坏箱  2:未检测到箱子</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.damage_code</td>
+                                <td>CK</td>
+                                <td>String</td>
+                                <td><pre>损坏代码，["BR"]:断裂 ["BT"]:弯曲 ["DB"]:杂物 ["CK"]:破裂 ["DY"]:粉末</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.is_outside</td>
+                                <td>1</td>
+                                <td>Number</td>
+                                <td><pre>0:箱内  1:箱外  2:未检测到箱子</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.weight</td>
+                                <td>{}</td>
+                                <td>Object</td>
+                                <td><pre>重量标识</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.container_num</td>
+                                <td></td>
+                                <td>Object</td>
+                                <td><pre>箱号</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.container_type</td>
+                                <td></td>
+                                <td>Object</td>
+                                <td><pre>箱型</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.crop_img</td>
+                                <td>https://file.cimcai.com/video/frames/1643265066_test/1643265068.61813041.jpg</td>
+                                <td>String</td>
+                                <td><pre>残损部位图片地址</pre></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>调用示例</h3>
+                    <div class="markdown">
+                        <h4><a href="javascript:;"></a>python</h4>
+                        <div class="editor-preview">
+                            <pre class="json-editor-blackbord python" contenteditable="false">
+                                <ul class="json-dict"><li># coding=utf-8</li><li><span class="json-literal">import </span><span class="param">os</span></li><li><span class="json-literal">import </span><span class="param">requests</span></li><li><span class="param">url = </span><span class="json-string">'http://service.cimcai.com/detect-photo-container-damaged'</span></li><li><span class="param">image_path = </span><span class="json-string">'您的照片路径'</span></li><li><span class="param">image_name = os.path.basename(image_path)</span></li><li># keys为飞瞳引擎小程序中，个人主页中32位开发秘钥</li><li><span class="param">payload = {</span><span class="json-string">'keys'</span><span class="param">: </span><span class="json-string">'b7988d2f72b5f69dc059d3a41b1b3d64'</span><span class="param">}</span></li><li><span class="param">files = [(image_name,(image_name,open(image_path,</span><span class="json-string">'rb'</span><span class="param">),</span><span class="json-string">'image/jpeg'</span><span class="param">))]</span></li><li><span class="param">headers = {}</span></li><li><span class="param">response = requests.request(</span><span class="json-string">'POST'</span><span class="param">, url, headers=headers, data=payload, files=files)</span></li><li><span class="param">print(response.text)</span></li></ul>
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="target" id="video1">
+                    <h2 class="top">3.1 视频集装箱残损上传api</h2>
+                    <div class="desc"><p>用于识别集装箱视频残损及信息。由于视频集装箱残损和信息识别需消耗一定时间，飞瞳引擎采用异步返回结果的方式。用户第一步利用视频上传接口，上传视频和视频标识码indexs_value，第二步用获取视频识别信息接口，上传第一步中indexs_value获取视频集装箱残损和信息识别结果。</p></div>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>基本信息</h3>
+                    <ul class="editor-info">
+                        <li><strong>接口地址： </strong><code class="span">http://service.cimcai.com/upload-container-video</code></li>
+                        <li><strong>请求方式： </strong><code class="span">POST</code></li>
+                        <li><strong>Content-Type： </strong><code class="span">multipart/form-data</code></li>
+                    </ul>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>请求参数</h3>
+                    <div class="markdown">
+                        <h4><a href="javascript:;"></a>body参数及说明</h4>
+                        <table>
+                            <tbody><tr>
+                                <th>参数名</th>
+                                <th>示例值</th>
+                                <th>参数类型</th>
+                                <th>是否必填</th>
+                                <th>参数描述</th>
+                            </tr>
+                            <tr>
+                                <td>filename</td>
+                                <td>test.mp4</td>
+                                <td>file</td>
+                                <td>是</td>
+                                <td><pre>视频文件</pre></td>
+                            </tr>
+                            <tr>
+                                <td>indexs</td>
+                                <td>test</td>
+                                <td>string</td>
+                                <td>是</td>
+                                <td><pre>生产唯一标识符，用于获取残损信息</pre></td>
+                            </tr>
+                            <tr>
+                                <td>keys</td>
+                                <td>b7988d2f72b5f69dc059d3a41b1b3d64</td>
+                                <td>string</td>
+                                <td>是</td>
+                                <td><pre>飞瞳引擎小程序中，个人主页中32位开发秘钥</pre></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>响应示例</h3>
+                    <div class="markdown">
+                        <h4><a href="javascript:;"></a>成功响应示例</h4>
+                        <div class="editor-preview">
+                            <pre class="json-editor-blackbord" contenteditable="false"><a href="" class="json-toggle"></a>{<ul class="json-dict"><li><span class="json-string json-property">"code"</span>: <span class="json-literal json-literal-number">0</span>, //状态码</li><li><span class="json-string json-property">"message"</span>: <span class="json-string">"上传成功"</span> //状态信息</li></ul>}</pre>
+                        </div>
+                        <h4><a href="javascript:;"></a>字段描述</h4>
+                        <table class="response-parameter">
+                            <tbody><tr>
+                                <th>参数名</th>
+                                <th>示例值</th>
+                                <th>参数类型</th>
+                                <th>参数描述</th>
+                            </tr>
+                            <tr>
+                                <td>code</td>
+                                <td>0</td>
+                                <td>Number</td>
+                                <td><pre>状态码</pre></td>
+                            </tr>
+                            <tr>
+                                <td>message</td>
+                                <td>上传成功</td>
+                                <td>String</td>
+                                <td><pre>状态信息</pre></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>调用示例</h3>
+                    <div class="markdown">
+                        <h4><a href="javascript:;"></a>python</h4>
+                        <div class="editor-preview">
+                            <pre class="json-editor-blackbord python" contenteditable="false">
+                                <ul class="json-dict"><li># coding=utf-8</li><li><span class="json-literal">import </span><span class="param">os</span></li><li><span class="json-literal">import </span><span class="param">requests</span></li><li><span class="param">url = </span><span class="json-string">'http://service.cimcai.com/upload-container-video'</span></li><li><span class="param">video_path = </span><span class="json-string">'您的视频路径'</span></li><li><span class="param">video_name = os.path.basename(video_path)</span></li><li># 自定义，indexs_value为视频唯一标识,用来调取此视频识别结果</li><li><span class="param">indexs_value = </span><span class="json-string">'test'</span></li><li># keys为飞瞳引擎小程序中，个人主页中32位开发秘钥</li> = {</span><span class="json-string">'indexs'</span><span class="param">: indexs_value,</span><span class="json-string">'keys'</span><span class="param">: </span><span class="json-string">'b7988d2f72b5f69dc059d3a41b1b3d64'</span><span class="param">}</span></li><li><span class="param">files = [(<span class="json-string">'filename'</span>,(video_name,open(video_path,</span><span class="json-string">'rb'</span><span class="param">),</span><span class="json-string">'application/octet-stream'</span><span class="param">))]</span></li><li><span class="param">headers = {}</span></li><li><span class="param">response = requests.request(</span><span class="json-string">'POST'</span><span class="param">, url, headers=headers, data=payload, files=files)</span></li><li><span class="param">print(response.text)</span></li></ul>
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="target" id="video2">
+                    <h2 class="top">3.2 视频集装箱残损获取api</h2>
+                    <div class="desc"><p>用于获取集装箱视频残损及信息。由于视频集装箱残损和信息识别需消耗一定时间，飞瞳引擎采用异步返回结果的方式。用户第一步利用视频上传接口，上传视频和视频标识码indexs_value，第二步用获取视频识别信息接口，上传第一步中indexs_value获取视频集装箱残损和信息识别结果。</p></div>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>基本信息</h3>
+                    <ul class="editor-info">
+                        <li><strong>接口地址： </strong><code class="span">http://service.cimcai.com/video-container-inspect-result</code></li>
+                        <li><strong>请求方式： </strong><code class="span">GET</code></li>
+                        <li><strong>Content-Type： </strong><code class="span">multipart/form-data</code></li>
+                    </ul>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>请求参数</h3>
+                    <div class="markdown">
+                        <h4><a href="javascript:;"></a>body参数及说明</h4>
+                        <table>
+                            <tbody><tr>
+                                <th>参数名</th>
+                                <th>示例值</th>
+                                <th>参数类型</th>
+                                <th>是否必填</th>
+                                <th>参数描述</th>
+                            </tr>
+                            <tr>
+                                <td>indexs</td>
+                                <td>test</td>
+                                <td>string</td>
+                                <td>是</td>
+                                <td><pre>生产唯一标识符，用于获取残损信息</pre></td>
+                            </tr>
+                            <tr>
+                                <td>keys</td>
+                                <td>b7988d2f72b5f69dc059d3a41b1b3d64</td>
+                                <td>string</td>
+                                <td>是</td>
+                                <td><pre>飞瞳引擎小程序中，个人主页中32位开发秘钥</pre></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>响应示例</h3>
+                    <div class="markdown">
+                        <h4><a href="javascript:;"></a>成功响应示例</h4>
+                        <div class="editor-preview">
+                            <pre class="json-editor-blackbord" contenteditable="false"><a href="" class="json-toggle"></a>{<ul class="json-dict"><li><a href="" class="json-toggle"></a><span class="json-string json-property">"data"</span>: {<ul class="json-dict"><li><span class="json-string json-property">"damage_items_image"</span>: [], //箱损图片</li><li><a href="" class="json-toggle"></a><span class="json-string json-property">"container"</span>: [<ol class="json-array"><li><span class="json-string">"TCNU6374636"</span></li></ol>], //箱号</li><li><span class="json-string json-property">"result"</span>: <span class="json-string">"0"</span>, //箱况，"0":好箱  "1":坏箱  "2":未检测到箱子</li><li><span class="json-string json-property">"damage_items"</span>: [], //损坏代码，["BR"]:断裂 ["BT"]:弯曲 ["DB"]:杂物 ["CK"]:破裂 ["DY"]:粉末</li><li><a href="" class="json-toggle"></a><span class="json-string json-property">"container_type"</span>: [<ol class="json-array"><li><span class="json-string">"45G1"</span></li></ol>], //箱型</li><li><a href="" class="json-toggle"></a><span class="json-string json-property">"standard_weight"</span>: [<ol class="json-array"><li><span class="json-literal json-literal-number">32500</span>,</li><li><span class="json-literal json-literal-number">71650</span>,</li><li><span class="json-literal json-literal-number">3900</span>,</li><li><span class="json-literal json-literal-number">8600</span>,</li><li><span class="json-literal json-literal-number">28600</span>,</li><li><span class="json-literal json-literal-number">63050</span></li></ol>] //重量标识</li></ul>}, //识别相关信息</li><li><span class="json-string json-property">"code"</span>: <span class="json-literal json-literal-number">0</span>, //状态码</li><li><span class="json-string json-property">"message"</span>: <span class="json-string">"成功"</span> //状态信息</li></ul>}</pre>
+                        </div>
+                        <h4><a href="javascript:;"></a>字段描述</h4>
+                        <table class="response-parameter">
+                            <tbody><tr>
+                                <th>参数名</th>
+                                <th>示例值</th>
+                                <th>参数类型</th>
+                                <th>参数描述</th>
+                            </tr>
+                            <tr>
+                                <td>data</td>
+                                <td></td>
+                                <td>Object</td>
+                                <td><pre>识别相关信息</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.damage_items_image</td>
+                                <td>{}</td>
+                                <td>Object</td>
+                                <td><pre>箱损图片</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.container</td>
+                                <td>TCNU6374636</td>
+                                <td>String</td>
+                                <td><pre>箱号</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.result</td>
+                                <td>0</td>
+                                <td>Number</td>
+                                <td><pre>箱况，"0":好箱  "1":坏箱  "2":未检测到箱子</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.damage_items</td>
+                                <td>{}</td>
+                                <td>Object</td>
+                                <td><pre>损坏代码，["BR"]:断裂 ["BT"]:弯曲 ["DB"]:杂物 ["CK"]:破裂 ["DY"]:粉末</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.container_type</td>
+                                <td>45G1</td>
+                                <td>Number</td>
+                                <td><pre>箱型</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.standard_weight</td>
+                                <td>32500,71650,3900,8600,28600,63050</td>
+                                <td>Array</td>
+                                <td><pre>重量标识</pre></td>
+                            </tr>
+                            <tr>
+                                <td>code</td>
+                                <td>0</td>
+                                <td>Number</td>
+                                <td><pre>状态码</pre></td>
+                            </tr>
+                            <tr>
+                                <td>message</td>
+                                <td>成功</td>
+                                <td>String</td>
+                                <td><pre>状态信息</pre></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>调用示例</h3>
+                    <div class="markdown">
+                        <h4><a href="javascript:;"></a>python</h4>
+                        <div class="editor-preview">
+                            <pre class="json-editor-blackbord python" contenteditable="false">
+                                <ul class="json-dict"><li># coding=utf-8</li><li><span class="json-literal">import </span><span class="param">requests</span></li><li><span class="param">url = </span><span class="json-string">'http://service.cimcai.com/video-container-inspect-result'</span></li><li><span class="param">indexs_value = </span><span class="json-string">'test'</span></li><li># keys为飞瞳引擎小程序中，个人主页中32位开发秘钥</li><li><span class="param">params = {</span><span class="json-string">'indexs'</span><span class="param">: indexs_value,</span><span class="json-string">'keys'</span><span class="param">: </span><span class="json-string">'b7988d2f72b5f69dc059d3a41b1b3d64'</span><span class="param">}</span></li><li><span class="param">response = requests.request(</span><span class="json-string">'GET'</span><span class="param">, url, params=params)</span></li><li><span class="param">print(response.text)</span></li></ul>
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="target" id="plate">
+                    <h2 class="top">4 照片集卡/半挂车车牌识别api</h2>
+                    <div class="desc"><p>用于识别集卡车照片车牌号、半挂车号</p></div>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>基本信息</h3>
+                    <ul class="editor-info">
+                        <li><strong>接口地址： </strong><code class="span">http://service.cimcai.com/detect-photo-plate-number</code></li>
+                        <li><strong>请求方式： </strong><code class="span">POST</code></li>
+                        <li><strong>Content-Type： </strong><code class="span">multipart/form-data</code></li>
+                    </ul>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>请求参数</h3>
+                    <div class="markdown">
+                        <h4><a href="javascript:;"></a>body参数及说明</h4>
+                        <table>
+                            <tbody><tr>
+                                <th>参数名</th>
+                                <th>示例值</th>
+                                <th>参数类型</th>
+                                <th>是否必填</th>
+                                <th>参数描述</th>
+                            </tr>
+                            <tr>
+                                <td>test.jpg</td>
+                                <td>test.jpg</td>
+                                <td>file</td>
+                                <td>是</td>
+                                <td><pre>照片文件</pre></td>
+                            </tr>
+                            <tr>
+                                <td>keys</td>
+                                <td>b7988d2f72b5f69dc059d3a41b1b3d64</td>
+                                <td>string</td>
+                                <td>是</td>
+                                <td><pre>飞瞳引擎小程序中，个人主页中32位开发秘钥</pre></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>响应示例</h3>
+                    <div class="markdown">
+                        <h4><a href="javascript:;"></a>成功响应示例</h4>
+                        <div class="editor-preview">
+                            <pre class="json-editor-blackbord" contenteditable="false"><a href="" class="json-toggle"></a>{<ul class="json-dict"><li><span class="json-string json-property">"code"</span>: <span class="json-literal json-literal-number">0</span>, //状态码</li><li><span class="json-string json-property">"message"</span>: <span class="json-string">"成功"</span>, //状态信息</li><li><a href="" class="json-toggle"></a><span class="json-string json-property">"data"</span>: {<ul class="json-dict"><li><span class="json-string json-property">"license_plate_number"</span>: <span class="json-string">""</span>, //集卡车号</li><li><span class="json-string json-property">"trailer_plate_number"</span>: <span class="json-string">"沪AE230挂"</span>, //车挂号</li><li><span class="json-string json-property">"artwork_master"</span>: <a href="http://file.cimcai.com/image/image_plate_number/20211026200431302.jpg" target="_blank" class="json-string json-url">"http://file.cimcai.com/image/image_plate_number/20211026200431302.jpg"</a>, //照片地址</li><li><a href="" class="json-toggle"></a><span class="json-string json-property">"plate_img"</span>: [<ol class="json-array"><li><a href="https://file.cimcai.com/video/frames/20211026200431302/1643270633.8625689.jpg" target="_blank" class="json-string json-url">"https://file.cimcai.com/video/frames/20211026200431302/1643270633.8625689.jpg"</a></li></ol>] //车牌照片地址</li></ul>} //识别相关信息</li></ul>}</pre>
+                        </div>
+                        <h4><a href="javascript:;"></a>字段描述</h4>
+                        <table class="response-parameter">
+                            <tbody><tr>
+                                <th>参数名</th>
+                                <th>示例值</th>
+                                <th>参数类型</th>
+                                <th>参数描述</th>
+                            </tr>
+                            <tr>
+                                <td>code</td>
+                                <td>0</td>
+                                <td>Number</td>
+                                <td><pre>状态码</pre></td>
+                            </tr>
+                            <tr>
+                                <td>message</td>
+                                <td>成功</td>
+                                <td>String</td>
+                                <td><pre>状态信息</pre></td>
+                            </tr>
+                            <tr>
+                                <td>data</td>
+                                <td></td>
+                                <td>Object</td>
+                                <td><pre>识别相关信息</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.license_plate_number</td>
+                                <td></td>
+                                <td>Object</td>
+                                <td><pre>集卡车号</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.trailer_plate_number</td>
+                                <td>沪AE230挂</td>
+                                <td>Object</td>
+                                <td><pre>车挂号</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.artwork_master</td>
+                                <td>http://file.cimcai.com/image/image_plate_number/20211026200431302.jpg</td>
+                                <td>String</td>
+                                <td><pre>照片地址</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.plate_img</td>
+                                <td>https://file.cimcai.com/video/frames/20211026200431302/1643270633.8625689.jpg</td>
+                                <td>String</td>
+                                <td><pre>车牌照片地址</pre></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>调用示例</h3>
+                    <div class="markdown">
+                        <h4><a href="javascript:;"></a>python</h4>
+                        <div class="editor-preview">
+                            <pre class="json-editor-blackbord python" contenteditable="false">
+                                <ul class="json-dict"><li># coding=utf-8</li><li><span class="json-literal">import </span><span class="param">os</span></li><li><span class="json-literal">import </span><span class="param">requests</span></li><li><span class="param">url = </span><span class="json-string">'http://service.cimcai.com/detect-photo-plate-number'</span></li><li><span class="param">image_path = </span><span class="json-string">'您的照片路径'</span></li><li><span class="param">image_name = os.path.basename(image_path)</span></li><li># keys为飞瞳引擎小程序中，个人主页中32位开发秘钥</li><li><span class="param">payload = {</span><span class="json-string">'keys'</span><span class="param">: </span><span class="json-string">'b7988d2f72b5f69dc059d3a41b1b3d64'</span><span class="param">}</span></li><li><span class="param">files = [(image_name,(image_name,open(image_path,</span><span class="json-string">'rb'</span><span class="param">),</span><span class="json-string">'image/jpeg'</span><span class="param">))]</span></li><li><span class="param">headers = {}</span></li><li><span class="param">response = requests.request(</span><span class="json-string">'POST'</span><span class="param">, url, headers=headers, data=payload, files=files)</span></li><li><span class="param">print(response.text)</span></li></ul>
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="target" id="photo">
+                    <h2 class="top">5 照片是否PS修改识别api</h2>
+                    <div class="desc"><p>用于识别照片是否PS修改</p></div>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>基本信息</h3>
+                    <ul class="editor-info">
+                        <li><strong>接口地址： </strong><code class="span">http://service.cimcai.com/detect-whether-photo-ps</code></li>
+                        <li><strong>请求方式： </strong><code class="span">POST</code></li>
+                        <li><strong>Content-Type： </strong><code class="span">multipart/form-data</code></li>
+                    </ul>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>请求参数</h3>
+                    <div class="markdown">
+                        <h4><a href="javascript:;"></a>body参数及说明</h4>
+                        <table>
+                            <tbody><tr>
+                                <th>参数名</th>
+                                <th>示例值</th>
+                                <th>参数类型</th>
+                                <th>是否必填</th>
+                                <th>参数描述</th>
+                            </tr>
+                            <tr>
+                                <td>test.jpg</td>
+                                <td>test.jpg</td>
+                                <td>file</td>
+                                <td>是</td>
+                                <td><pre>照片文件</pre></td>
+                            </tr>
+                            <tr>
+                                <td>keys</td>
+                                <td>b7988d2f72b5f69dc059d3a41b1b3d64</td>
+                                <td>string</td>
+                                <td>是</td>
+                                <td><pre>飞瞳引擎小程序中，个人主页中32位开发秘钥</pre></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>响应示例</h3>
+                    <div class="markdown">
+                        <h4><a href="javascript:;"></a>成功响应示例</h4>
+                        <div class="editor-preview">
+                            <pre class="json-editor-blackbord" contenteditable="false"><a href="" class="json-toggle"></a>{<ul class="json-dict"><li><span class="json-string json-property">"code"</span>: <span class="json-literal json-literal-number">0</span>, //状态码</li><li><span class="json-string json-property">"message"</span>: <span class="json-string">"成功"</span>, //状态信息</li><li><a href="" class="json-toggle"></a><span class="json-string json-property">"data"</span>: {<ul class="json-dict"><li><span class="json-string json-property">"image_path"</span>: <a href="http://file.cimcai.com/image/image_ps/test.jpg" target="_blank" class="json-string json-url">"http://file.cimcai.com/image/image_ps/test.jpg"</a>, //照片地址</li><li><span class="json-string json-property">"software"</span>: <span class="json-string">""</span>, //若被修改，返回被修改的软件</li><li><span class="json-string json-property">"change_time"</span>: <span class="json-string">""</span>, //若被修改，返回被修改的时间</li><li><span class="json-string json-property">"is_ps"</span>: <span class="json-literal json-literal-number">0</span> //照片是否被修改，0:未被修改  1:被修改  其他:未知</li></ul>} //识别相关信息</li></ul>}</pre>
+                        </div>
+                        <h4><a href="javascript:;"></a>字段描述</h4>
+                        <table class="response-parameter">
+                            <tbody><tr>
+                                <th>参数名</th>
+                                <th>示例值</th>
+                                <th>参数类型</th>
+                                <th>参数描述</th>
+                            </tr>
+                            <tr>
+                                <td>code</td>
+                                <td>0</td>
+                                <td>Number</td>
+                                <td><pre>状态码</pre></td>
+                            </tr>
+                            <tr>
+                                <td>message</td>
+                                <td>成功</td>
+                                <td>String</td>
+                                <td><pre>状态信息</pre></td>
+                            </tr>
+                            <tr>
+                                <td>data</td>
+                                <td></td>
+                                <td>Object</td>
+                                <td><pre>识别相关信息</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.image_path</td>
+                                <td>http://file.cimcai.com/image/image_ps/test.jpg</td>
+                                <td>String</td>
+                                <td><pre>照片地址</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.software</td>
+                                <td></td>
+                                <td>Object</td>
+                                <td><pre>若被修改，返回被修改的软件</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.change_time</td>
+                                <td></td>
+                                <td>Object</td>
+                                <td><pre>若被修改，返回被修改的时间</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.is_ps</td>
+                                <td>0</td>
+                                <td>Number</td>
+                                <td><pre>照片是否被修改，0:未被修改  1:被修改  其他:未知</pre></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>调用示例</h3>
+                    <div class="markdown">
+                        <h4><a href="javascript:;"></a>python</h4>
+                        <div class="editor-preview">
+                            <pre class="json-editor-blackbord python" contenteditable="false">
+                                <ul class="json-dict"><li># coding=utf-8</li><li><span class="json-literal">import </span><span class="param">os</span></li><li><span class="json-literal">import </span><span class="param">requests</span></li><li><span class="param">url = </span><span class="json-string">'http://service.cimcai.com/detect-whether-photo-ps'</span></li><li><span class="param">image_path = </span><span class="json-string">'您的照片路径'</span></li><li><span class="param">image_name = os.path.basename(image_path)</span></li><li># keys为飞瞳引擎小程序中，个人主页中32位开发秘钥</li><li><span class="param">payload = {</span><span class="json-string">'keys'</span><span class="param">: </span><span class="json-string">'b7988d2f72b5f69dc059d3a41b1b3d64'</span><span class="param">}</span></li><li><span class="param">files = [(image_name,(image_name,open(image_path,</span><span class="json-string">'rb'</span><span class="param">),</span><span class="json-string">'image/jpeg'</span><span class="param">))]</span></li><li><span class="param">headers = {}</span></li><li><span class="param">response = requests.request(</span><span class="json-string">'POST'</span><span class="param">, url, headers=headers, data=payload, files=files)</span></li><li><span class="param">print(response.text)</span></li></ul>
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="target" id="seal">
+                    <h2 class="top">6 照片铅封信息识别api</h2>
+                    <div class="desc"><p>用于识别铅封照片中铅封号</p></div>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>基本信息</h3>
+                    <ul class="editor-info">
+                        <li><strong>接口地址： </strong><code class="span">http://service.cimcai.com/detect-photo-seal</code></li>
+                        <li><strong>请求方式： </strong><code class="span">POST</code></li>
+                        <li><strong>Content-Type： </strong><code class="span">multipart/form-data</code></li>
+                    </ul>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>请求参数</h3>
+                    <div class="markdown">
+                        <h4><a href="javascript:;"></a>body参数及说明</h4>
+                        <table>
+                            <tbody><tr>
+                                <th>参数名</th>
+                                <th>示例值</th>
+                                <th>参数类型</th>
+                                <th>是否必填</th>
+                                <th>参数描述</th>
+                            </tr>
+                            <tr>
+                                <td>test.jpg</td>
+                                <td>test.jpg</td>
+                                <td>file</td>
+                                <td>是</td>
+                                <td><pre>照片文件</pre></td>
+                            </tr>
+                            <tr>
+                                <td>keys</td>
+                                <td>b7988d2f72b5f69dc059d3a41b1b3d64</td>
+                                <td>string</td>
+                                <td>是</td>
+                                <td><pre>飞瞳引擎小程序中，个人主页中32位开发秘钥</pre></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>响应示例</h3>
+                    <div class="markdown">
+                        <h4><a href="javascript:;"></a>成功响应示例</h4>
+                        <div class="editor-preview">
+                            <pre class="json-editor-blackbord" contenteditable="false"><a href="" class="json-toggle"></a>{<ul class="json-dict"><li><span class="json-string json-property">"code"</span>: <span class="json-literal json-literal-number">0</span>, //状态码</li><li><span class="json-string json-property">"message"</span>: <span class="json-string">"成功"</span>, //状态信息</li><li><a href="" class="json-toggle"></a><span class="json-string json-property">"data"</span>: {<ul class="json-dict"><li><span class="json-string json-property">"image_path"</span>: <a href="http://file.cimcai.com/image/image_ps/test.jpg" target="_blank" class="json-string json-url">"http://file.cimcai.com/image/image_ps/test.jpg"</a>, //照片地址</li><li><span class="json-string json-property">"software"</span>: <span class="json-string">""</span>, //若被修改，返回被修改的软件</li><li><span class="json-string json-property">"change_time"</span>: <span class="json-string">""</span>, //若被修改，返回被修改的时间</li><li><span class="json-string json-property">"is_ps"</span>: <span class="json-literal json-literal-number">0</span> //照片是否被修改，0:未被修改  1:被修改  其他:未知</li></ul>} //识别相关信息</li></ul>}</pre>
+                        </div>
+                        <h4><a href="javascript:;"></a>字段描述</h4>
+                        <table class="response-parameter">
+                            <tbody><tr>
+                                <th>参数名</th>
+                                <th>示例值</th>
+                                <th>参数类型</th>
+                                <th>参数描述</th>
+                            </tr>
+                            <tr>
+                                <td>code</td>
+                                <td>0</td>
+                                <td>Number</td>
+                                <td><pre>状态码</pre></td>
+                            </tr>
+                            <tr>
+                                <td>message</td>
+                                <td>成功</td>
+                                <td>String</td>
+                                <td><pre>状态信息</pre></td>
+                            </tr>
+                            <tr>
+                                <td>data</td>
+                                <td></td>
+                                <td>Object</td>
+                                <td><pre>识别相关信息</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.image_path</td>
+                                <td>http://file.cimcai.com/image/image_ps/test.jpg</td>
+                                <td>String</td>
+                                <td><pre>照片地址</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.software</td>
+                                <td></td>
+                                <td>Object</td>
+                                <td><pre>若被修改，返回被修改的软件</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.change_time</td>
+                                <td></td>
+                                <td>Object</td>
+                                <td><pre>若被修改，返回被修改的时间</pre></td>
+                            </tr>
+                            <tr>
+                                <td style="text-indent: 15px;">data.is_ps</td>
+                                <td>0</td>
+                                <td>Number</td>
+                                <td><pre>照片是否被修改，0:未被修改  1:被修改  其他:未知</pre></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 class="title"><a href="javascript:;" class="anchor"></a>调用示例</h3>
+                    <div class="markdown">
+                        <h4><a href="javascript:;"></a>python</h4>
+                        <div class="editor-preview">
+                            <pre class="json-editor-blackbord python" contenteditable="false">
+                                <ul class="json-dict"><li># coding=utf-8</li><li><span class="json-literal">import </span><span class="param">os</span></li><li><span class="json-literal">import </span><span class="param">requests</span></li><li><span class="param">url = </span><span class="json-string">'http://service.cimcai.com/detect-photo-seal'</span></li><li><span class="param">image_path = </span><span class="json-string">'您的照片路径'</span></li><li><span class="param">image_name = os.path.basename(image_path)</span></li><li># keys为飞瞳引擎小程序中，个人主页中32位开发秘钥</li><li><span class="param">payload = {</span><span class="json-string">'keys'</span><span class="param">: </span><span class="json-string">'b7988d2f72b5f69dc059d3a41b1b3d64'</span><span class="param">}</span></li><li><span class="param">files = [(image_name,(image_name,open(image_path,</span><span class="json-string">'rb'</span><span class="param">),</span><span class="json-string">'image/jpeg'</span><span class="param">))]</span></li><li><span class="param">headers = {}</span></li><li><span class="param">response = requests.request(</span><span class="json-string">'POST'</span><span class="param">, url, headers=headers, data=payload, files=files)</span></li><li><span class="param">print(response.text)</span></li></ul>
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-nav">
+                <ul>
+                    <li class="nav-btn active" data-target="0"><a href="javascript:;">基本信息</a></li>
+                    <li class="nav-btn" data-target="1"><a href="javascript:;">请求参数</a></li>
+                    <li class="nav-btn" data-target="2"><a href="javascript:;">响应示例</a></li>
+                    <li class="nav-btn" data-target="3"><a href="javascript:;">调用示例</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script>
+    $(document).on('click', '.side-item', function () {
+        var _local_target = $(this).attr('data-target');
+        if (!_local_target) return;
+        $('.side-item').each(function(i, el){
+            $(el).removeClass('active')
+        })
+        $(this).addClass('active');
+        $('.target').each(function(i, el){
+            $(el).removeClass('active');
+            if ($(this).attr('id') === _local_target) {
+                $(this).addClass('active')
+            }
+        })
+        $('.nav-btn').removeClass('active');
+        $('.nav-btn').eq(0).addClass('active');
+        $('.container-box').scrollTop(0)
+    }).on('click', '.nav-btn', function () {
+        var index = parseInt($(this).attr('data-target'));
+        $('.nav-btn').removeClass('active')
+        $(this).addClass('active');
+        var top = $('.active .title').eq(index)[0].offsetTop;
+        $('.container-box').scrollTop(top)
+    })
+</script>
