@@ -1,0 +1,406 @@
+body {
+    background-color: #fff;
+}
+
+.container * {
+    font-weight: normal !important;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    padding: 0;
+}
+
+.side-nav {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-size: 16px;
+    background-color: #fafafa;
+    min-width: 300px;
+    position: relative;
+    border: 1px solid hsla(0, 5%, 84%, .5);
+    border-width: 0px 1px 0px 0px;
+}
+
+.side-title {
+    width: 100%;
+    line-height: 50px;
+    cursor: pointer;
+    padding-left: 49px;
+    padding-top: 10px;
+    font-size: 18px;
+    font-weight: 600 !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    white-space: nowrap;
+    max-width: 300px;
+}
+
+li {
+    list-style: none;
+}
+
+.nav-item {
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item li {
+    height: 52px;
+    color: #4d4d4d;
+    font-size: 14px;
+    padding: 18px 25px;
+    padding-left: 50px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.nav-item li:hover {
+    background-color: hsla(0, 0%, 89.8%, .4);
+}
+
+.nav-item li.active {
+    background-color: #eee;
+    color: #e71b00;
+}
+
+.container-box {
+    flex: 1;
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+.preview {
+    height: 100%;
+    font-size: 14px;
+    line-height: 1.8;
+    padding-bottom: 80px;
+    box-sizing: border-box;
+    max-height: calc(100% - 60px);
+}
+
+.target {
+    padding: 20px;
+}
+
+.preview .top {
+    font-size: 24px;
+    line-height: 32px;
+    border-bottom: #eee 1px solid;
+    justify-content: space-between;
+    position: relative;
+}
+
+.preview h2 {
+    font-weight: 600 !important;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.preview .desc {
+    position: relative;
+    display: inline-block;
+    height: auto;
+    padding: 0;
+    width: 100%;
+    margin: 16px 0;
+    margin-bottom: 6px;
+    color: #333;
+    line-height: 1.7;
+    overflow: hidden;
+}
+
+.desc p {
+    padding: 8px 0;
+    color: #212121;
+}
+
+.preview h3 {
+    margin-top: 14px;
+    font-size: 16px;
+    line-height: 24px;
+    position: relative;
+}
+
+.preview h3.title {
+    padding-left: 10px;
+    font-weight: 500 !important;
+}
+
+.preview h3.title .anchor {
+    display: inline-block;
+    position: absolute;
+    width: 4px;
+    height: 13px;
+    top: 6px;
+    left: 0;
+    margin-right: 10px;
+    background: #e71b00;
+}
+
+h3.title i {
+    position: absolute;
+    cursor: pointer;
+    right: 20px;
+    top: 0;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.editor-info {
+    margin: 12px 24px;
+    background-color: #f7f7f7;
+    border-radius: 6px;
+    padding: 8px 0;
+}
+
+.preview>ul li {
+    list-style: none;
+    line-height: 20px;
+    margin-left: 20px;
+    padding-left: 4px;
+}
+
+.editor-info>li {
+    padding: 5px;
+    list-style: inside;
+    line-height: 20px;
+    list-style: none;
+}
+
+.editor-info li strong {
+    display: inline-block;
+    text-align: right;
+    width: 100px;
+    font-size: 12px;
+}
+
+.editor-info strong {
+    font-weight: 400 !important;
+}
+
+.editor-info li .span {
+    font-style: normal;
+    padding: 2px 4px;
+    font-size: 12px;
+    color: #e96900;
+}
+
+.editor-info li code.span {
+    border-radius: 2px;
+}
+
+.markdown {
+    padding: 0 24px;
+}
+
+.markdown h4 {
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 24px;
+    position: relative;
+}
+
+.preview .editor-preview {
+    position: relative;
+    display: inline-block;
+    height: auto;
+    padding: 0;
+    width: 100%;
+}
+
+.editor-preview pre {
+    font-size: 14px;
+    background: #373e52;
+    color: #fff;
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+}
+
+a.json-toggle {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+ul.json-dict {
+    list-style-type: none;
+    margin: 0 0 0 1px;
+    border-left: 1px solid #525252;
+    padding-left: 2em;
+}
+
+.json-editor-blackbord li {
+    list-style: none;
+    padding: 0;
+    font-size: 12px;
+    color: #aaa;
+}
+
+.json-string {
+    color: #0ad161;
+}
+
+.json-property {
+    color: #4fdee5;
+    line-height: 160%;
+    font-weight: 500;
+}
+
+.json-literal {
+    color: #ff8c00;
+}
+
+.param {
+    color: #fff;
+    line-height: 160%;
+}
+
+.preview table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    vertical-align: top;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 12px 0 12px;
+}
+
+.preview table tbody tr:nth-child(2n-1) {
+    background: #f7f7f7;
+}
+
+.preview table td,
+.preview table th {
+    border: 1px solid #eee;
+}
+
+.preview table th {
+    padding: 8px 12px;
+    font-size: 14px;
+    text-align: left;
+    word-break: break-word;
+    min-width: 100px;
+    font-weight: 600 !important;
+}
+
+.preview table td {
+    padding: 8px 12px;
+    font-size: 12px;
+    text-align: left;
+    word-break: break-word;
+    min-width: 100px;
+}
+
+.preview table tr td:first-of-type {
+    width: 30%;
+}
+
+.preview table td pre {
+    margin: 0;
+    padding: 0;
+    white-space: pre-wrap;
+    border: none;
+    background: none;
+}
+
+.box-nav {
+    position: fixed;
+    top: 120px;
+    right: 100px;
+    width: 180px;
+    padding-left: 0px;
+    border-left: 1px solid #e5e5e5;
+    background: #fff;
+}
+
+.box-nav ul li {
+    margin-left: 15px;
+    line-height: 28px;
+    font-size: 12px;
+    list-style: none;
+}
+
+.box-nav ul {
+    margin: 0;
+    padding: 0;
+}
+.box-nav li a {
+    color: #333;
+}
+
+.box-nav li.active a {
+    color: #e71b10
+}
+
+.python .json-dict {
+    border-left: none;
+    padding-left: 1em;
+}
+
+@media screen and (min-width: 800px) {
+    .container {
+        height: calc(100% - 90px);
+        top: 90px;
+    }
+
+    .container-box {
+        width: 100%;
+        min-width: 800px;
+        max-width: calc(100% - 300px);
+    }
+
+    .preview {
+        width: calc(100% - 360px);
+        min-width: 726px;
+        margin: 0 80px;
+    }
+
+    .target {
+        display: none;
+    }
+
+    .target.active {
+        display: block;
+    }
+
+    .side-nav,
+    .box-nav {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .container {
+        height: calc(100% - 60px);
+        top: 60px;
+    }
+
+    .container-box {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .preview {
+        margin: 0;
+        min-width: 726px;
+        width: 100%;
+    }
+
+    .target {
+        display: block;
+    }
+
+    .side-nav,
+    .box-nav {
+        display: none;
+    }
+}
+

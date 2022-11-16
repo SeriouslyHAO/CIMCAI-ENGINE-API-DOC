@@ -1,0 +1,35 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<!--
+2013-9-30: Created.
+-->
+<svg>
+<metadata>
+Created by iconfont
+</metadata>
+<defs>
+
+<font id="iconfont" horiz-adv-x="1024" >
+  <font-face
+    font-family="iconfont"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1024"
+    ascent="896"
+    descent="-128"
+  />
+    <missing-glyph />
+    
+    <glyph glyph-name="play" unicode="&#59188;" d="M785.916 517.885C621.622 606.746 522.65 695.587 358.355 784.47 194.06 873.357 111.93 828.899 111.93 651.198v-533.194c0-177.75 82.151-222.18 246.425-133.341 164.295 88.93 263.266 177.75 427.56 266.611 164.273 88.862 164.273 177.772 0 266.611z m0 0"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="component" unicode="&#58882;" d="M64 832h384v-384H64V832z m0-512h384v-384H64V320z m512 0h384v-384H576V320z m192 128c106.039 0 192 85.961 192 192S874.039 832 768 832s-192-85.961-192-192 85.961-192 192-192z"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="add" unicode="&#58980;" d="M853.333333 416H544V725.333333c0 17.066667-14.933333 32-32 32s-32-14.933333-32-32v-309.333333H170.666667c-17.066667 0-32-14.933333-32-32s14.933333-32 32-32h309.333333V42.666667c0-17.066667 14.933333-32 32-32s32 14.933333 32 32V352H853.333333c17.066667 0 32 14.933333 32 32s-14.933333 32-32 32z"  horiz-adv-x="1024" />
+
+    
+
+
+  </font>
+</defs></svg>

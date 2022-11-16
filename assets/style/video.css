@@ -1,0 +1,101 @@
+body {
+	background-color: #C3C3C3;
+	font-size: 14px;
+}
+
+a {
+	text-decoration: none;
+}
+
+.headers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 85px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+
+.btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 59px;
+	border-radius: 5px;
+	font-weight: bold;
+	background-color: #FFFFFF;
+	color: #6c6c6f;
+	position: relative;
+} 
+
+.btn img {
+	width: 25px;
+	height: 25px;
+	padding-right: 8px;
+}
+
+.title {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	margin-top: 17px;
+	color: #FFFFFF;
+}
+
+.img-wrap {
+	width: 35px;
+	height: 35px;
+	float: left;
+	border-radius: 18px;
+	padding-right: 8px;
+}
+
+.img-wrap img {
+	width: 100%;
+	height: 100%;
+	border-radius: 18px;
+}
+
+.text-wrap {
+	float: right;
+}
+
+.my-button {
+	margin-top: 10px;
+}
+
+.web-button {
+	
+}
+
+.footer {
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	width: calc(100% - 16px);
+	height: 127px;
+	padding: 8px;
+	z-index: 9999;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.my-button input {
+		position: absolute;
+		font-size: 60px;
+		right: 0;
+		top: 0;
+		opacity: 0;
+		filter: alpha(opacity=0);
+		cursor: pointer
+}
+
+.my-button:hover {
+		color: #444;
+		background: #eee;
+		border-color: #ccc;
+		text-decoration: none
+}
